@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-quantum-darkest text-white font-sans;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-quantum-darker;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-quantum-purple/60 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-quantum-purple/80;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 py-20 sm:px-6 md:py-28 lg:px-8;
+  }
+  
+  .section-heading {
+    @apply font-orbitron font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-6 md:mb-8;
+  }
+  
+  .section-subheading {
+    @apply font-orbitron font-medium text-xl md:text-2xl lg:text-3xl text-white mb-4 md:mb-6;
+  }
+  
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-quantum-accent to-quantum-neon;
+  }
+
+  .quantum-card {
+    @apply bg-quantum-dark/40 backdrop-blur-md rounded-xl border border-quantum-purple/20 p-6 transition-all duration-300;
+  }
+
+  .quantum-button {
+    @apply font-orbitron py-3 px-6 rounded-lg bg-quantum-purple hover:bg-quantum-purple/90
+    text-white font-medium transition-all duration-300 
+    hover:shadow-neon flex items-center justify-center gap-2
+    disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .quantum-button-outline {
+    @apply font-orbitron py-3 px-6 rounded-lg bg-transparent border border-quantum-accent 
+    text-quantum-accent font-medium transition-all duration-300 
+    hover:bg-quantum-accent/10 hover:shadow-neon flex items-center 
+    justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+}
+
+.quantum-gradient {
+  background: radial-gradient(circle at center, rgba(26, 33, 81, 0.5) 0%, rgba(5, 10, 28, 0.8) 70%, rgba(1, 5, 8, 1) 100%);
+}
+
+/* Glowing text animation */
+.glow-text {
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00f0ff, 0 0 20px #00f0ff;
+  }
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00f0ff, 0 0 40px #00f0ff;
+  }
+}
+
+/* For the Grid Background */
+.grid-background {
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, rgba(74, 29, 150, 0.1) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(74, 29, 150, 0.1) 1px, transparent 1px);
+}
