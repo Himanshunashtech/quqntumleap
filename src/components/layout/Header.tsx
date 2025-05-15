@@ -4,7 +4,13 @@ import { Menu, X, Atom } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const navItems = [
-  { name:" " , href: " " },
+  { name:"Home " , href: "/ " },
+  { name:"About " , href: "/about " },
+  { name:"Services " , href: "/services " },
+  { name:"Products " , href: "/products " },
+
+
+
 ];
 
 const Header = () => {
@@ -58,9 +64,11 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
+            <Link to="/contact">
             <motion.button className="quantum-button ml-4" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.3, delay: navItems.length * 0.1 }}>
               Contact Us
             </motion.button>
+            </Link>
           </nav>
           <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden text-white hover:text-quantum-accent transition duration-300">
             {mobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}

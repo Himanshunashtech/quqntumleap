@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+
 import { 
   Atom, 
   Mail, 
@@ -46,63 +48,68 @@ const Footer: React.FC = () => {
               </p>
               
               <div className="space-y-3">
-                <div className="flex items-center space-x-3 text-gray-400 hover:text-quantum-accent transition duration-300">
-                  <Mail className="h-5 w-5" />
-                  <a href="mailto:info@quantumleap.ai">info@quantumleap.ai</a>
-                </div>
-                <div className="flex items-center space-x-3 text-gray-400 hover:text-quantum-accent transition duration-300">
-                  <Phone className="h-5 w-5" />
-                  <a href="tel:+11234567890">+1 (123) 456-7890</a>
-                </div>
-                <div className="flex items-center space-x-3 text-gray-400 hover:text-quantum-accent transition duration-300">
-                  <MapPin className="h-5 w-5" />
-                  <span>Quantum Valley, CA 94103</span>
-                </div>
-              </div>
+  <div className="flex items-center space-x-3 text-gray-400 hover:text-quantum-accent transition duration-300">
+    <Mail className="h-5 w-5" />
+    <a href="mailto:info@quantumleap.ai">info@quantumleap.ai</a>
+  </div>
+  <div className="flex items-center space-x-3 text-gray-400 hover:text-quantum-accent transition duration-300">
+    <Phone className="h-5 w-5" />
+    <a href="tel:+11234567890">+1 (123) 456-7890</a>
+  </div>
+  <div className="flex items-center space-x-3 text-gray-400 hover:text-quantum-accent transition duration-300">
+    <MapPin className="h-5 w-5" />
+    <a href="https://www.google.com/maps/search/?api=1&query=Quantum+Valley,+CA+94103" target="_blank" rel="noopener noreferrer">Quantum Valley, CA 94103</a>
+  </div>
+</div>
             </div>
             
             {/* Quick Links */}
-            <div>
-              <h3 className="text-white font-orbitron font-medium text-lg mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                {['About Us', 'Services', 'Products', 'Careers', 'Contact', 'Blog'].map((item) => (
-                  <li key={item}>
-                    <a 
-                      href="#" 
-                      className="text-gray-400 hover:text-quantum-accent transition duration-300 flex items-center"
-                    >
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-quantum-accent mr-2"></span>
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
+      <div>
+  <h3 className="text-white font-orbitron font-medium text-lg mb-4">Quick Links</h3>
+  <ul className="space-y-2">
+    {[
+      { name: 'About Us', path: '/about' },
+      { name: 'Services', path: '/services' },
+      { name: 'Products', path: '/products' },
+      { name: 'Contact', path: '/contact' },
+      { name: 'Blog', path: '/blogs' },
+    ].map((item) => (
+      <li key={item.name}>
+        <Link
+          to={item.path}
+          className="text-gray-400 hover:text-quantum-accent transition duration-300 flex items-center"
+        >
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-quantum-accent mr-2"></span>
+          {item.name}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
             {/* Solutions */}
-            <div>
-              <h3 className="text-white font-orbitron font-medium text-lg mb-4">Solutions</h3>
-              <ul className="space-y-2">
-                {[
-                  'Quantum Computing', 
-                  'AI Integration', 
-                  'Quantum Machine Learning', 
-                  'Quantum Encryption', 
-                  'Quantum Networks', 
-                  'Research Partnerships'
-                ].map((item) => (
-                  <li key={item}>
-                    <a 
-                      href="#" 
-                      className="text-gray-400 hover:text-quantum-accent transition duration-300 flex items-center"
-                    >
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-quantum-accent mr-2"></span>
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+           <div>
+  <h3 className="text-white font-orbitron font-medium text-lg mb-4">Solutions</h3>
+  <ul className="space-y-2">
+    {[
+      { name: 'Quantum Computing', to: '/quantumcomputing' },
+      
+      { name: 'Quantum Machine Learning', to: '/quantummachinelearning' },
+      { name: 'Quantum Encryption', to: '/quantumencryption' },
+      { name: 'Quantum Networks', to: '/quantumnetwork' },
+      { name: 'AI Integration', to: '/aiintegeration' },
+    ].map(({ name, to }) => (
+      <li key={name}>
+        <Link
+          to={to}
+          className="text-gray-400 hover:text-quantum-accent transition duration-300 flex items-center"
+        >
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-quantum-accent mr-2"></span>
+          {name}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
             
             {/* Newsletter */}
             <div className="space-y-6">
@@ -130,18 +137,25 @@ const Footer: React.FC = () => {
               
               {/* Social Media Icons */}
               <div className="flex space-x-3">
-                {[Github, Twitter, Linkedin, Youtube].map((Icon, index) => (
-                  <motion.a 
-                    key={index}
-                    href="#"
-                    className="flex items-center justify-center h-10 w-10 rounded-full bg-quantum-dark border border-quantum-purple/30 
-                    text-white hover:text-quantum-accent hover:border-quantum-accent transition duration-300"
-                    whileHover={{ y: -3, boxShadow: '0 0 8px rgba(0, 240, 255, 0.7)' }}
-                  >
-                    <Icon className="h-5 w-5" />
-                  </motion.a>
-                ))}
-              </div>
+  {[
+    { icon: Github, url: "https://github.com/login" },
+    { icon: Twitter, url: "https://twitter.com/login" },
+    { icon: Linkedin, url: "https://www.linkedin.com/login" },
+    { icon: Youtube, url: "https://www.youtube.com/account" }
+  ].map(({ icon: Icon, url }, index) => (
+    <motion.a 
+      key={index}
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center justify-center h-10 w-10 rounded-full bg-quantum-dark border border-quantum-purple/30 
+      text-white hover:text-quantum-accent hover:border-quantum-accent transition duration-300"
+      whileHover={{ y: -3, boxShadow: '0 0 8px rgba(0, 240, 255, 0.7)' }}
+    >
+      <Icon className="h-5 w-5" />
+    </motion.a>
+  ))}
+</div>
             </div>
           </div>
           
@@ -152,9 +166,7 @@ const Footer: React.FC = () => {
             </p>
             
             <div className="flex space-x-4 mt-4 mr-16 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-quantum-accent text-sm transition duration-300">Privacy Policy</a>
-              <a href="#" className="text-gray-400 hover:text-quantum-accent text-sm transition duration-300">Terms of Service</a>
-            </div>
+<Link to="/privacy-policy-terms" className="text-gray-400 hover:text-quantum-accent text-sm transition duration-300">Privacy Policy & Terms of Service</Link>            </div>
           </div>
         </div>
       </div>
