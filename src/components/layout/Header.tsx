@@ -4,7 +4,7 @@ import { Menu, X, Atom } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const navItems = [
-  { name: 'Home', href: '/' },
+  { name:" " , href: " " },
 ];
 
 const Header = () => {
