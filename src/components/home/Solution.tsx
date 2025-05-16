@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Brain, Cpu, NetworkIcon, Workflow } from 'lucide-react';
+import CircuitBoardWithSpheres from '../ui/circuit'
 
 const Solution: React.FC = () => {
   const [ref, inView] = useInView({
@@ -69,20 +70,15 @@ const Solution: React.FC = () => {
       </motion.div>
 
       <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-        {/* Left: Animated quantum circuit + AI brain visual */}
+        {/* Left: Animated circuit board + AI brain visual */}
         <motion.div 
-          className="w-full lg:w-1/2 h-96 relative bg-quantum-dark/50 rounded-2xl overflow-hidden border border-quantum-purple/30"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <p className="text-sm text-gray-400">Interactive Quantum Circuit + AI Visualization</p>
-              <p className="text-xs text-gray-500">(Animated visual would appear here)</p>
-            </div>
-          </div>
-        </motion.div>
+  className="w-full lg:w-1/2 h-96 relative bg-quantum-dark/50 rounded-2xl overflow-hidden border border-quantum-purple/30 flex items-center justify-center"
+  initial={{ opacity: 0, scale: 0.9 }}
+  animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+  transition={{ duration: 0.8, delay: 0.3 }}
+>
+  <CircuitBoardWithSpheres />
+</motion.div>
 
         {/* Right: Solution text content */}
         <motion.div 
@@ -106,22 +102,6 @@ const Solution: React.FC = () => {
           </div>
         </motion.div>
       </div>
-      
-      <motion.div 
-        className="mt-16 mx-auto max-w-4xl text-center"
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.7, delay: 0.8 }}
-      >
-        <div className="quantum-card bg-quantum-blue/20 border-quantum-accent/40">
-          <h3 className="font-orbitron text-xl font-medium text-white mb-4">
-            Quantum Advantage, Available Today
-          </h3>
-          <p className="text-gray-300">
-            Unlike many quantum companies focused on theoretical future applications, QuantumLeap delivers practical quantum solutions that provide measurable advantages right now. Our hybrid approach allows you to benefit from quantum computing today while scaling for tomorrow.
-          </p>
-        </div>
-      </motion.div>
     </div>
   );
 };

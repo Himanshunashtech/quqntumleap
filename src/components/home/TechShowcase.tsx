@@ -8,6 +8,7 @@ import {
   ChevronLeft, 
   ChevronRight 
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const products = [
   {
@@ -73,8 +74,9 @@ const ProductCard = ({ product, index }: { product: typeof products[0], index: n
         <motion.button 
           className="mt-4 text-quantum-accent font-medium flex items-center"
           whileHover={{ x: 5 }}
-        >
+        ><Link to="/quantumcomputing">
           Learn more
+          </Link>
           <ChevronRight className="h-4 w-4 ml-1" />
         </motion.button>
       </div>
@@ -153,6 +155,7 @@ const TechShowcase: React.FC = () => {
       </div>
       
       {/* Call to action */}
+      
       <motion.div 
         className="text-center mt-12"
         initial={{ opacity: 0 }}
@@ -163,10 +166,14 @@ const TechShowcase: React.FC = () => {
           className="quantum-button"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-        >
+        ><Link to="/quantumcomputing">
           View All Products
+                   </Link>
+
         </motion.button>
+
       </motion.div>
+     
     </div>
   );
 };

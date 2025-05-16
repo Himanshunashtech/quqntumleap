@@ -15,6 +15,8 @@ import QuantumEncryptionPage from './pages/solutions/Quantunencrption';
 import QuantumMLPage from './pages/solutions/quantumMachinelearning';
 import PrivacyPolicyTermsPage from './pages/PrivacyPolicyTermsPage';
 import ScrollToTop from './components/scrolltotop';
+import NeonTreeExploreWith3DBackground from './components/home/Explore';
+import NeonAuthPage from './components/home/Auth.page';
 
 function App() {
   return (
@@ -35,12 +37,15 @@ function App() {
 
         <Route path="/quantumnetwork" element={<Layout><QuantumNetworksPage /></Layout>} />
         <Route path="/quantummachinelearning" element={<Layout><QuantumMLPage /></Layout>} />
-        <Route path="//privacy-policy-terms" element={<Layout><PrivacyPolicyTermsPage /></Layout>} />
+        <Route path="/privacy-policy-terms" element={<Layout><PrivacyPolicyTermsPage /></Layout>} />
+        <Route path="/explore" element={<Layout><NeonTreeExploreWith3DBackground/></Layout>} />
 
 
 
 
 
+
+        <Route path="/login" element={<NeonAuthPage/>} />
 
 
 

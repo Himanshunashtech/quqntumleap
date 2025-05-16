@@ -14,7 +14,7 @@ interface MediaCardProps {
 
 const MediaCard: React.FC<MediaCardProps> = ({ title, source, date, excerpt, image, link, index }) => {
   const cardRef = useRef(null);
-  const isInView = useInView(cardRef, { once: true, threshold: 0.1 });
+  const isInView = useInView(cardRef, { once: true,  });
   
   return (
     <motion.div
@@ -66,7 +66,7 @@ const mediaData = [
     date: "May 15, 2024",
     excerpt: "QuantumLeap's 256-qubit processor has solved a problem that would take classical computers billions of years to calculate, in just minutes.",
     image: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    link: "#"
+    link: "https://techcrunch.com/quantumleap-processor-breakthrough"
   },
   {
     title: "How QuantumLeap's AI-Quantum Integration is Transforming Drug Discovery",
@@ -74,7 +74,7 @@ const mediaData = [
     date: "April 3, 2024",
     excerpt: "Pharmaceutical companies using QuantumLeap's platform are reporting 80% faster discovery timelines for novel drug compounds.",
     image: "https://images.pexels.com/photos/2156881/pexels-photo-2156881.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    link: "#"
+    link: "https://forbes.com/quantumleap-ai-drug-discovery"
   },
   {
     title: "QuantumLeap Announces Strategic Partnership with Global Financial Institutions",
@@ -82,7 +82,7 @@ const mediaData = [
     date: "March 10, 2024",
     excerpt: "Five of the world's largest banks will deploy QuantumLeap's technology for risk modeling and fraud detection.",
     image: "https://images.pexels.com/photos/7078651/pexels-photo-7078651.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    link: "#"
+    link: "https://wsj.com/quantumleap-finance-partnership"
   }
 ];
 
@@ -120,21 +120,6 @@ const MediaCoverage: React.FC = () => {
           />
         ))}
       </div>
-      
-      <motion.div 
-        className="text-center mt-16"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.7, delay: 0.6 }}
-      >
-        <motion.button 
-          className="quantum-button"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Press Kit & Media Inquiries
-        </motion.button>
-      </motion.div>
     </div>
   );
 };

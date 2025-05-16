@@ -11,8 +11,8 @@ interface StatCardProps {
 
 const StatCard: React.FC<StatCardProps> = ({ icon, value, label, delay }) => {
   const cardRef = useRef(null);
-  const isInView = useInView(cardRef, { once: true, threshold: 0.2 });
-  
+  const isInView = useInView(cardRef, { once: true,  });
+
   const variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
@@ -24,15 +24,14 @@ const StatCard: React.FC<StatCardProps> = ({ icon, value, label, delay }) => {
       }
     }
   };
-  
+
   return (
     <motion.div
       ref={cardRef}
       variants={variants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      className="quantum-card border-quantum-accent/20 hover:shadow-neon hover:border-quantum-accent/50
-      transition-all duration-500"
+      className="quantum-card border-quantum-accent/20 hover:shadow-neon hover:border-quantum-accent/50 transition-all duration-500"
     >
       <div className="flex flex-col items-center text-center">
         <div className="mb-4 text-quantum-accent">
@@ -49,7 +48,7 @@ const StatCard: React.FC<StatCardProps> = ({ icon, value, label, delay }) => {
 
 const statsData = [
   {
-    icon: <TrendingUp className="h-8 w-8" />,
+    icon: <TrendingUp className="h-8 w-8" />,  
     value: "10,000x",
     label: "Performance Increase"
   },
@@ -75,10 +74,48 @@ const statsData = [
   }
 ];
 
+// Performance data for the bar chart (numeric values, no suffix)
+const performanceData = [
+  { label: "Q1", value: 2500 },
+  { label: "Q2", value: 4000 },
+  { label: "Q3", value: 7000 },
+  { label: "Q4", value: 10000 },
+];
+
+const BarChart: React.FC = () => {
+  const chartRef = useRef(null);
+  const isInView = useInView(chartRef, { once: true, threshold: 0.3 });
+
+  return (
+    <div ref={chartRef} className="space-y-4">
+      {performanceData.map(({ label, value }) => {
+        const barWidth = isInView ? `${(value / 10000) * 100}%` : '0%';
+
+        return (
+          <div key={label} className="flex items-center space-x-4">
+            <span className="w-24 text-gray-400 font-mono">{label}</span>
+            <div className="flex-1 bg-quantum-darkest rounded-full h-6 relative overflow-hidden">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: barWidth }}
+                transition={{ duration: 1.2, ease: 'easeOut' }}
+                className="h-6 rounded-full shadow-neon bg-gradient-to-r from-purple-600 via-purple-500 to-cyan-400"
+              />
+              <span className="absolute right-3 top-0 bottom-0 flex items-center text-white font-semibold font-mono">
+                {value.toLocaleString()}
+              </span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 const StatsDashboard: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-  
+
   return (
     <div className="section-container" ref={sectionRef}>
       <motion.div 
@@ -107,7 +144,6 @@ const StatsDashboard: React.FC = () => {
         ))}
       </div>
       
-      {/* Graph visualization */}
       <motion.div 
         className="mt-16 p-8 quantum-card bg-quantum-dark/60 max-w-6xl mx-auto"
         initial={{ opacity: 0, y: 30 }}
@@ -117,8 +153,8 @@ const StatsDashboard: React.FC = () => {
         <h3 className="font-orbitron text-xl font-medium text-white mb-6 text-center">
           Performance Benchmark
         </h3>
-        <div className="h-64 bg-quantum-darkest/70 rounded-lg border border-quantum-purple/20 flex items-center justify-center">
-          <p className="text-gray-400 text-sm">Interactive performance graph visualization would appear here</p>
+        <div className="h-24">
+          <BarChart />
         </div>
         <div className="mt-4 text-right">
           <span className="text-xs text-gray-500">Data updated in real-time</span>

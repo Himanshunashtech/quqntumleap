@@ -50,13 +50,13 @@ const Hero: React.FC = () => {
                   <span>Explore Solutions</span>
                   <PlayCircle className="h-5 w-5" />
                 </motion.button>
-                <motion.button 
+                {/* <motion.button 
                   className="quantum-button-outline"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <span>Watch Demo</span>
-                </motion.button>
+                </motion.button> */}
               </div>
             </motion.div>
           </div>
@@ -76,30 +76,30 @@ const Hero: React.FC = () => {
                 className="absolute -bottom-4 md:bottom-10 left-1/2 transform -translate-x-1/2 
                 quantum-button bg-quantum-dark border border-quantum-neon/50 hover:border-quantum-accent 
                 px-5 py-3 rounded-full shadow-neon z-10"
-                whileHover={{ scale: 1.05, boxShadow: '0 0 15px #00F0FF' }}
-                whileTap={{ scale: 0.95 }}
+                
               >
                 <Mic className="h-5 w-5 mr-2" />
-                <span>Ask our AI</span>
+                <span>Ask AI</span>
               </motion.button>
             </motion.div>
           </div>
         </div>
         
         {/* Scroll down indicator */}
-        <motion.div 
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <button 
-            onClick={scrollToNextSection}
-            className="flex flex-col items-center text-quantum-accent hover:text-quantum-glow transition duration-300"
-          >
-            <span className="text-sm font-medium mb-2">Scroll Down</span>
-            <ChevronDown className="h-6 w-6" />
-          </button>
-        </motion.div>
+       <motion.div 
+  className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center"
+  animate={{ y: [0, 10, 0] }}
+  transition={{ duration: 1.5, repeat: Infinity }}
+>
+  <button 
+    onClick={scrollToNextSection}
+    className="flex flex-col items-center text-quantum-accent hover:text-quantum-glow transition duration-300"
+  >
+    <span className="text-sm font-medium mb-2">Scroll Down</span>
+    <ChevronDown className="h-6 w-6" />
+  </button>
+</motion.div>
+
       </div>
     </div>
   );

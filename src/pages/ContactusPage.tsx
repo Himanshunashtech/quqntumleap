@@ -56,19 +56,19 @@ const ContactUs: React.FC = () => {
             type="text"
             placeholder="Your Name"
             required
-            className="quantum-input bg-quantum-dark border border-quantum-neon/50 rounded-xl px-5 py-4 text-quantum-neon placeholder-quantum-accent/70 focus:outline-none focus:border-quantum-accent focus:ring-2 focus:ring-quantum-accent/50 transition duration-300 w-full"
+            className="quantum-input bg-quantum-dark border border-quantum-neon/50 rounded-xl px-5 py-4 text-quantum-neon placeholder-quantum-accent/70 focus:outline-none focus:border-quantum-accent focus:ring-2 focus:ring-quantum-accent/50 focus:text-quantum-neon transition duration-300 w-full"
           />
           <input
             type="email"
             placeholder="Your Email"
             required
-            className="quantum-input bg-quantum-dark border border-quantum-neon/50 rounded-xl px-5 py-4 text-quantum-neon placeholder-quantum-accent/70 focus:outline-none focus:border-quantum-accent focus:ring-2 focus:ring-quantum-accent/50 transition duration-300 w-full"
+            className="quantum-input bg-quantum-dark border border-quantum-neon/50 rounded-xl px-5 py-4 text-quantum-neon placeholder-quantum-accent/70 focus:outline-none focus:border-quantum-accent focus:ring-2 focus:ring-quantum-accent/50 focus:text-quantum-neon transition duration-300 w-full"
           />
           <textarea
             placeholder="Your Message"
             rows={5}
             required
-            className="quantum-input bg-quantum-dark border border-quantum-neon/50 rounded-xl px-5 py-4 text-quantum-neon placeholder-quantum-accent/70 focus:outline-none focus:border-quantum-accent focus:ring-2 focus:ring-quantum-accent/50 transition duration-300 w-full resize-none"
+            className="quantum-input bg-quantum-dark border border-quantum-neon/50 rounded-xl px-5 py-4 text-quantum-neon placeholder-quantum-accent/70 focus:outline-none focus:border-quantum-accent focus:ring-2 focus:ring-quantum-accent/50 focus:text-quantum-neon transition duration-300 w-full resize-none"
           />
           <motion.button
             type="submit"
@@ -91,40 +91,42 @@ const ContactUs: React.FC = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed top-1/2 left-1/2 z-50 w-96 max-w-full -translate-x-1/2 -translate-y-1/2 rounded-xl bg-[#1e0b3c] bg-opacity-90 backdrop-blur-md border border-quantum-neon shadow-neon p-12 flex flex-col items-center"
+            className="fixed inset-0 flex items-center justify-center z-50 p-4"
           >
-            {/* Stars container */}
-            <div className="relative w-full h-28 mb-8 flex justify-center items-center">
-              {[...Array(5)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  custom={i}
-                  variants={starVariants}
-                  initial="initial"
-                  animate="animate"
-                  className="absolute bg-quantum-neon rounded-full"
-                  style={{
-                    width: 20,
-                    height: 20,
-                    top: '50%',
-                    left: `${15 + i * 16}%`,
-                    translate: '-50% -50%',
-                    filter:
-                      'drop-shadow(0 0 10px #A933FF) drop-shadow(0 0 15px #00F0FF)',
-                  }}
-                />
-              ))}
-            </div>
+            <div className="w-full max-w-md rounded-xl bg-[#1e0b3c] bg-opacity-90 backdrop-blur-md border border-quantum-neon shadow-neon p-12 flex flex-col items-center">
+              {/* Stars container */}
+              <div className="relative w-full h-28 mb-8 flex justify-center items-center">
+                {[...Array(5)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    custom={i}
+                    variants={starVariants}
+                    initial="initial"
+                    animate="animate"
+                    className="absolute bg-quantum-neon rounded-full"
+                    style={{
+                      width: 20,
+                      height: 20,
+                      top: '50%',
+                      left: `${15 + i * 16}%`,
+                      translate: '-50% -50%',
+                      filter:
+                        'drop-shadow(0 0 10px #A933FF) drop-shadow(0 0 15px #00F0FF)',
+                    }}
+                  />
+                ))}
+              </div>
 
-            {/* Message */}
-            <motion.p
-              className="text-3xl font-orbitron font-bold text-quantum-neon text-center tracking-wider select-none"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8, ease: 'easeOut' }}
-            >
-              We have received your message!
-            </motion.p>
+              {/* Message */}
+              <motion.p
+                className="text-3xl font-orbitron font-bold text-quantum-neon text-center tracking-wider select-none"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.8, ease: 'easeOut' }}
+              >
+                We have received your message!
+              </motion.p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
