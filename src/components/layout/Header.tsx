@@ -30,7 +30,7 @@ const Header = () => {
   }, []);
 
   // Close mobile menu on any nav click, and smooth scroll for hash links
-  const handleNavClick = (href) => {
+  const handleNavClick = (href:any) => {
     if (href.startsWith('#')) {
       const section = document.querySelector(href);
       if (section) {
